@@ -75,8 +75,16 @@ int main(void)
 		// align view
 		ParticleEngine.ToGravCenter();
 
+		static int Temp = 0;
+		if (Temp > 2)
+		{
+			Temp = 0;
+			ParticleEngine.AddParticle();
+		}
+		++Temp;
+
 		// wait for next step
-		Sleep(10);
+		Sleep(30);
 
 		/* Poll for and process events */
 		glfwPollEvents();

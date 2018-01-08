@@ -224,10 +224,10 @@
 			static int IdCount = 0;
 			Id = IdCount;
 			++IdCount;
-			mass = GenRandFloat(0, 0.0001);
+			mass = GenRandFloat(0.00000000001, 0.0001);
 			radius = sqrt(mass*0.018);
 			pos.set(GenRandFloat(1.0), GenRandFloat(1.0));
-			vel.set(GenRandFloat(0.01)+0.02*pos.y, GenRandFloat(0.01)-0.02*pos.x);
+			vel.set(GenRandFloat(0.01)+0.01*pos.y, GenRandFloat(0.01)-0.01*pos.x);
 			temperature = GenRandFloat(0, 10);
 		}
 	// destructor
@@ -346,6 +346,11 @@
 						{
 							ActParticle->vel += ActParticle->acc / ActParticle->mass;
 							ActParticle->pos += ActParticle->vel;
+							if (ActParticle->mass >= 0.008)
+							{
+								ActParticle->PrintInfo();
+								delete ActParticle;
+							}
 						}
 					// collision handling
 						else
@@ -380,5 +385,8 @@
 					ActParticle->pos =  ActParticle->pos - Center;
 					ActParticle = GetParticle();
 				}
+		}
+		void ParticleEngine::AddParticle() {
+			ParticleList.AddEntry();
 		}
 #pragma endregion

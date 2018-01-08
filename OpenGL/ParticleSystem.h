@@ -87,8 +87,8 @@ class ParticleEngine
 {
 private:
 	// settings
-	const int ParticleStartNum = 810;
-	const float G = 0.003f;
+	const int ParticleStartNum = 600;
+	const float G = 0.002f;
 	// private variables
 	pList ParticleList;
 public:
@@ -97,5 +97,6 @@ public:
 	// functions
 		Particle* GetParticle(bool Reset=0);
 		void CalcNextTick();
-		void ParticleEngine::ToGravCenter();
+		void ToGravCenter();
+		void AddParticle();
 };
